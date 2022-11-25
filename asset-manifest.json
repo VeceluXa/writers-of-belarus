@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/writers-of-belarus/static/css/main.073c9b0a.css",
+    "main.js": "/writers-of-belarus/static/js/main.71739d32.js",
+    "static/js/787.25ed0022.chunk.js": "/writers-of-belarus/static/js/787.25ed0022.chunk.js",
+    "static/media/logo.svg": "/writers-of-belarus/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/writers-of-belarus/index.html",
+    "main.073c9b0a.css.map": "/writers-of-belarus/static/css/main.073c9b0a.css.map",
+    "main.71739d32.js.map": "/writers-of-belarus/static/js/main.71739d32.js.map",
+    "787.25ed0022.chunk.js.map": "/writers-of-belarus/static/js/787.25ed0022.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.71739d32.js"
+  ]
+}
