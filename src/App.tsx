@@ -29,7 +29,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Navigation/>
       <Routes>
-        <Route path="/" element={ <HomePage/> }/>
+        <Route path="/writers-of-belarus" element={ <HomePage/> }/>
         <Route path="/writers-of-belarus/writers" element={ <WritersPage/> }/>
         <Route path="/writers-of-belarus/writer/:title" element={ <WriterPage/> }/>
         <Route path="/writers-of-belarus/about" element={ <AboutPage/> }/>
