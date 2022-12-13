@@ -20,7 +20,7 @@ export function WritersPage() {
                     variant="body1"
                 >
                     <Link
-                        href={'/writer/' + page.title}
+                        href={'/writers-of-belarus/writer/' + page.title}
                     >
                         { page.title }
                     </Link>

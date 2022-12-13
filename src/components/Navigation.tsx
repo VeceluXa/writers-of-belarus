@@ -122,7 +122,7 @@ export default function SearchAppBar() {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             <Link
-              href="/"
+              href="/writers-of-belarus/"
               sx={{
                 marginRight: 4
               }}
@@ -130,7 +130,7 @@ export default function SearchAppBar() {
               Writers of Belarus
             </Link>
             <Link
-              href="/about"
+              href="/writers-of-belarus/about"
               variant="body1"
               sx={{
                 marginRight: 2
@@ -140,7 +140,7 @@ export default function SearchAppBar() {
             </Link>
             <Link
               variant="body1"
-              href="/writers"
+              href="/writers-of-belarus/writers"
             >
               Writers
             </Link>

@@ -30,9 +30,9 @@ export default function App() {
       <Navigation/>
       <Routes>
         <Route path="/" element={ <HomePage/> }/>
-        <Route path="/writers" element={ <WritersPage/> }/>
-        <Route path="/writer/:title" element={ <WriterPage/> }/>
-        <Route path="/about" element={ <AboutPage/> }/>
+        <Route path="/writers-of-belarus/writers" element={ <WritersPage/> }/>
+        <Route path="/writers-of-belarus/writer/:title" element={ <WriterPage/> }/>
+        <Route path="/writers-of-belarus/about" element={ <AboutPage/> }/>
       </Routes>
     </ThemeProvider>
   );
