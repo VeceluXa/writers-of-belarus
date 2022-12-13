@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 
-function App() {
+import { AboutPage } from './pages/AboutPage';
+import { WritersPage } from './pages/WritersPage';
+import { HomePage } from './pages/HomePage';
+
+import Navigation from './components/Navigation'
+
+import { createTheme } from '@mui/material/styles'
+
+import { ThemeProvider } from '@emotion/react';
+import { WriterPage } from './pages/WriterPage';
+
+const theme  = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#ffca28',
+    },
+    secondary: {
+      main: '#f50057',
+    },
+  }
+})
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Navigation/>
+      <Routes>
+        <Route path="/" element={ <HomePage/> }/>
+        <Route path="/writers-of-belarus/writers" element={ <WritersPage/> }/>
+        <Route path="/writers-of-belarus/writer/:title" element={ <WriterPage/> }/>
+        <Route path="/writers-of-belarus/about" element={ <AboutPage/> }/>
+      </Routes>
+    </ThemeProvider>
   );
 }
-
-export default App;
