@@ -7,33 +7,30 @@ import { HomePage } from './pages/HomePage';
 
 import Navigation from './components/Navigation'
 
-import { createTheme } from '@mui/material/styles'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { themeOptions } from './themes/theme'
 
-import { ThemeProvider } from '@emotion/react';
 import { WriterPage } from './pages/WriterPage';
 
-const theme  = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#ffca28',
-    },
-    secondary: {
-      main: '#f50057',
-    },
-  }
-})
+const theme = createTheme(themeOptions);
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navigation/>
-      <Routes>
-        <Route path="/writers-of-belarus" element={ <HomePage/> }/>
-        <Route path="/writers-of-belarus/writers" element={ <WritersPage/> }/>
-        <Route path="/writers-of-belarus/writer/:title" element={ <WriterPage/> }/>
-        <Route path="/writers-of-belarus/about" element={ <AboutPage/> }/>
-      </Routes>
+      <div
+        style={{
+          backgroundColor: theme.palette.background.default
+        }}
+      >
+        <Routes>
+          <Route path="/writers-of-belarus" element={ <HomePage/> }/>
+          <Route path="/writers-of-belarus/writers" element={ <WritersPage/> }/>
+          <Route path="/writers-of-belarus/writer/:title" element={ <WriterPage/> }/>
+          <Route path="/writers-of-belarus/about" element={ <AboutPage/> }/>
+        </Routes>
+      </div>
+      
     </ThemeProvider>
   );
 }
