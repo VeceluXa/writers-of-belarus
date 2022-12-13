@@ -11,7 +11,9 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Link from './Link'
-const pages = [['Home', '/'], ['Writers', '/writers'], ['About', '/about']]
+const pages = [['Home', '/writers-of-belarus'], 
+               ['Writers', '/writers-of-belarus/writers'], 
+               ['About', '/writers-of-belarus/about']]
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
