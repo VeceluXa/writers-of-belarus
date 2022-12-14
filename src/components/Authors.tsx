@@ -14,7 +14,7 @@ export function Authors() {
                 columnWidth:'7em',
                 columns:'7em',
                 display:'-webkit-box',
-                marginTop:'40px'
+                marginTop:'5em'
             }}>
                 <AuthorFedya/>
                 <AuthorVitya/>

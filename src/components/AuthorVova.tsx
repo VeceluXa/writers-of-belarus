@@ -11,13 +11,13 @@ export function AuthorVova() {
                     <img
                         src={imgVova}
                         alt="Danilov Fedor"
-                        height={'150px'}
-                        width={'150px'}
+                        height={'150em'}
+                        width={'150em'}
                         style={{
                             boxShadow:'-moz-initial',
                             cursor:'pointer',
                             borderRadius:'75px',
-                            WebkitBoxShadow:'5px 6px 100px grey'
+                            WebkitBoxShadow:'5px 6px 200px grey'
                         }}
                         onClick={() => window.open('https://github.com/BashlikovV')}
                     />
