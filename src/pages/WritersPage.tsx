@@ -5,7 +5,6 @@ import { ErrorMessage } from "../components/ErrorMessage"
 import Loader from "../components/Loader"
 import MainContainer from "../components/MainContainer"
 import { useCategoryPages } from "../hooks/CategoryPagesFetch"
-import { WritersByLetter } from "../components/WritersByLetter" 
 
 export function check(props: any) {
     return props.value1 == props.value2
@@ -40,7 +39,6 @@ return(
                         }}>
                             <li>
                                 {/* {showing ? "" : <WritersByLetter writersByLetter={page.title.charAt(0)} showingAny={showing}/>} */}
-                                
                                 <Link href={'/writers-of-belarus/writer/' + page.title}>
                                     { page.title }
                                 </Link>
