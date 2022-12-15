@@ -16,8 +16,9 @@ const CircularLoading = () => (
       <CircularProgress
         size={70}
         sx={{
+          margin: 0,
           position: "fixed",
-          left: "50%",
+          left: "49%",
           top: "40%",
           transform: "translate(-50%, -50%)",
           zIndex: 2,
@@ -34,8 +35,11 @@ const Content = () => (
         color="text.secondary"
         variant="h4"
         align="center"
-        mt={50}
-        ml={12}
+        sx={{
+          position: "fixed",
+          left: "47.5%",
+          top: "60%"
+        }}
       >
         Loading...
       </Typography>
