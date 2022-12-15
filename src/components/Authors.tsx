@@ -16,8 +16,8 @@ export function Authors() {
                 marginTop:'5em',
 
             }}>
-                {data.map(author =>
-                    <Author path={author.path} name={author.name} link={author.link}/>
+                {data.map((author, index) =>
+                    <Author path={author.path} name={author.name} link={author.link} key={index}/>
                 )}
             </Box>
         </Container>
