@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from "@mui/material"
+import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 interface IMainContainerProps {
@@ -8,19 +9,25 @@ interface IMainContainerProps {
 
 export default function MainContainer({ children }: IMainContainerProps) {
     const theme = useTheme();
-    console.log(theme);
+    // console.log(theme);
     
     return(
-        <Container
-            maxWidth='md'
-            sx={{
-                paddingTop: 2,
-                padding: 5,
-                justifyContent: 'center',
-                backgroundColor: theme.palette.background.paper
-            }}
+        <Box
+            flex={1}
+            overflow="auto"
+            display="flex"
         >
-            { children && children }
-        </Container>
+            <Container
+                maxWidth='md'
+                sx={{
+                    paddingTop: 2,
+                    padding: 5,
+                    // justifyContent: 'center',
+                    backgroundColor: theme.palette.background.paper
+                    }}
+            >
+                { children && children }
+            </Container>
+        </Box>
     )
 }

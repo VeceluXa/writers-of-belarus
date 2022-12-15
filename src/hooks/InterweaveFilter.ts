@@ -12,6 +12,7 @@ class LinkFilter extends Filter {
     node(name: string, node: HTMLElement): HTMLElement | null {
 
         if (name === 'div' && node.classList[0] == 'mw-parser-output') {
+            console.log('123')
             node.setAttribute('style', `
                 font-family: sans-serif
             `)
@@ -19,7 +20,9 @@ class LinkFilter extends Filter {
 
         if (name === 'a') {
             node.removeAttribute('href')
-            // node.replaceWith('p')
+            node.removeAttribute('title')
+            // console.log(`${node.childNodes[0].textContent}`)
+            // node.replaceWith(`${node.childNodes[0].textContent}`)
         }
 
         if (name === 'span' && node.classList[0] == 'mw-editsection') {
