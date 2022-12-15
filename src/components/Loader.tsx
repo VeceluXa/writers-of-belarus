@@ -1,14 +1,14 @@
 import { Typography } from "@mui/material";
-import MainContainer from "./MainContainer";
+import Box from "@mui/material/Box";
 
 export default function Loader() {
     return(
-        <MainContainer>
+        <Box>
             <Typography
                 variant="h3"
             >
                 Loading...
             </Typography>
-        </MainContainer>
+        </Box>
     )
 }
