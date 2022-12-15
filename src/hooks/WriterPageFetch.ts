@@ -1,20 +1,25 @@
 import axios, { AxiosError } from 'axios';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import { IPage } from '../models/IPage'
+import { useTranslation } from 'react-i18next';
 
 export function usePage(title: string) {
+    const { t, i18n } = useTranslation('main', { keyPrefix: 'urls'})
+
     const [page, setPage] = useState<IPage | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
-    const url = `https://en.wikipedia.org/w/api.php?origin=*&action=parse&prop=text&page=${ title.split(' ').join('_') }&format=json`
+    const url = t('urlAuthorAPI', { name: `${ title.split(' ').join('_') }` })
+    // const url = `https://en.wikipedia.org/w/api.php?origin=*&action=parse&prop=text&page=${ title.split(' ').join('_') }&format=json`
     const url2 = `https://be.wikipedia.org/w/api.php?origin=*&action=parse&prop=text&page=${ title.split(' ').join('_') }&format=json`
 
     async function fetchPages(title: string) {
         try {
             setError('')
             setLoading(true)
-            const response = await axios.get<IPage>(url2)
+            console.log(i18n.language)
+            const response = await axios.get<IPage>(url)
             
 
             setPage(response.data)

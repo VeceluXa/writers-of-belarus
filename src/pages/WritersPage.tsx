@@ -21,7 +21,6 @@ export function WritersPage() {
                 rows.push({'id': index, 'name': it.title})
             })
         }
-        console.log(rows)
         return rows
     }
 
