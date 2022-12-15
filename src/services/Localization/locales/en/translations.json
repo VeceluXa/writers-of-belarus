@@ -1,0 +1,8 @@
+{
+    "main": {
+        "urls": {
+            "urlAuthorAPI": "https://en.wikipedia.org/w/api.php?origin=*&action=parse&prop=text&page={{name}}&format=json",
+            "urlCategoryAPI": "https://en.wikipedia.org/w/api.php?origin=*&query=opensearch&action=query&cmtitle=Category:Belarusian_writers&list=categorymembers&cmlimit=max&format=json"
+        }
+    }
+}

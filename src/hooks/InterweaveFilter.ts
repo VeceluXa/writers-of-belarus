@@ -11,8 +11,7 @@ class LinkFilter extends Filter {
 
     node(name: string, node: HTMLElement): HTMLElement | null {
 
-        if (name === 'div' && node.classList[0] == 'mw-parser-output') {
-            console.log('123')
+        if (name === 'div' && node.classList[0] === 'mw-parser-output') {
             node.setAttribute('style', `
                 font-family: sans-serif
             `)
@@ -25,11 +24,11 @@ class LinkFilter extends Filter {
             // node.replaceWith(`${node.childNodes[0].textContent}`)
         }
 
-        if (name === 'span' && node.classList[0] == 'mw-editsection') {
+        if (name === 'span' && node.classList[0] === 'mw-editsection') {
             return null
         }
 
-        if (name === 'table' && node.classList[0] == 'metadata') {
+        if (name === 'table' && node.classList[0] === 'metadata') {
             return null
         }
 
@@ -37,17 +36,17 @@ class LinkFilter extends Filter {
             return null
         }
 
-        if (name === 'th' && node.classList[0] == 'plainlist') {
+        if (name === 'th' && node.classList[0] === 'plainlist') {
             node.setAttribute('style', 'text-align: left;')
         }
 
-        if (name === 'th' && node.classList[0] == 'infobox-above') {
+        if (name === 'th' && node.classList[0] === 'infobox-above') {
             node.setAttribute('style', `
                 font-size: 400%
             `)
         }
 
-        if (name === 'div' && node.classList[0] == 'thumbinner') {
+        if (name === 'div' && node.classList[0] === 'thumbinner') {
             node.setAttribute('style', `
                 text-align: center;
                 margin: 10px
