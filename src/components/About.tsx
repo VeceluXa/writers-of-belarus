@@ -9,7 +9,7 @@ export function About() {
             }}
         >
             <Typography
-                variant="h4"
+                variant="h2"
                 align="center"
                 color="text.primary"
                 gutterBottom 
@@ -34,8 +34,25 @@ export function About() {
                     textAlign: 'center'
                 }}
             >
-                Our website will help you immerse yourself in the world of Belarusian literature. We have collected for you more than three hundred of the most famous Belarusian authors.
+                Writers of Belarus is a free multilingual online encyclopedia of writers who contributed to Belarusian culture and history. It is written and maintained by 3 students of BSUIR, FCSN, Software in IT. The data is provided by free API from wikipedia.org. 
                 </Typography>
+
+                <Typography
+                    variant="h5"
+                    align="center"
+                    color="text.secondary"
+                    paragraph
+                    sx={{
+                        fontWeight: 'light',
+                        fontStyle: 'italic',
+                        mx: 10,
+                        textAlign: 'center'
+                    }}
+                >
+                    Our website will help you immerse yourself in the world of Belarusian literature.
+                </Typography>
+
+                
         </Container>
     )
 }

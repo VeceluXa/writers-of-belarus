@@ -15,6 +15,7 @@ export function WriterPage() {
 
     return(
         <MainContainer>
+            {/* { title && <ErrorMessage error={ 'Error 404. Wrong link passed.' }/> } */}
             { loading && <Loader/> }
             { error && <ErrorMessage error={ error }/> }
             { page && 
