@@ -1,16 +1,9 @@
-import { listClasses, Table, Typography } from "@mui/material"
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2"
-
-import Link from "../components/Link"
-import { ErrorMessage } from "../components/ErrorMessage"
-import Loader from "../components/Loader"
 import MainContainer from "../components/MainContainer"
 import { useCategoryPages } from "../hooks/CategoryPagesFetch"
-import { WritersByLetter } from "../components/WritersByLetter"
 
 import { DataGrid, GridColDef, GridEventListener } from "@mui/x-data-grid"
 import { ICategoryMember } from "../models/ICategoryPages"
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface IRow {
     id: number,
