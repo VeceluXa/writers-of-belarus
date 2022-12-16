@@ -7,6 +7,7 @@ import imgFedya from "../images/imgFedya.png"
 import imgVitya from "../images/imgVitya.png"
 import imgVova from "../images/imgVova.png"
 import { useTranslation } from "react-i18next";
+//Bug fixed
 
 export function Authors() {
     const { t } = useTranslation('main', { keyPrefix: 'authors'})
