@@ -1,0 +1,29 @@
+{
+    "main": {
+        "urls": {
+            "urlAuthorAPI": "https://en.wikipedia.org/w/api.php?origin=*&action=parse&prop=text&page={{name}}&format=json",
+            "urlCategoryAPI": "https://en.wikipedia.org/w/api.php?origin=*&query=opensearch&action=query&cmtitle=Category:Belarusian_writers&list=categorymembers&cmtype=page&cmlimit=max&format=json"
+        },
+        "nav": {
+            "about": "About",
+            "writers": "Writers",
+            "changeLng": "Change language",
+            "search": "Search...",
+            "home": "Home",
+            "title": "Writers of Belarus"
+        },
+        "about": {
+            "title": "Writers of Belarus",
+            "paragraph": "Writers of Belarus is a free multilingual online encyclopedia of writers who contributed to Belarusian culture and history. It is written and maintained by 3 students of BSUIR, FCSN, Software in IT. The data is provided by free API from wikipedia.org.",
+            "header": "Our website will help you immerse yourself in the world of Belarusian literature."
+        },
+        "authors": {
+            "nameFyodor" : "Danilov Fyodor",
+            "nameVladimir" : "Bashlikov Vladimir",
+            "nameViktor" : "Bosko Viktor"
+        },
+        "writers": {
+            "headerName": "Full Name"
+        }
+    }
+}

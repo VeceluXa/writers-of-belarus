@@ -10,10 +10,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import { Button } from '@mui/material';
 import Link from './Link'
-const pages = [['Home', '/writers-of-belarus'], 
-               ['Writers', '/writers-of-belarus/writers'], 
-               ['About', '/writers-of-belarus/about']]
+import { useTranslation } from 'react-i18next';
+import { changeLanguage } from 'i18next';
+import { textTransform } from '@mui/system';
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -58,6 +60,25 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+  const { t, i18n } = useTranslation('main', { keyPrefix: 'nav' })
+
+  const swapLanguage = () => {
+    if (i18n.language === 'en') {
+      i18n.changeLanguage('ru')
+    } else {
+      i18n.changeLanguage('en')
+    }
+    console.log(i18n.language)
+  }
+
+  const swapLanguageMenuWrapper = () => {
+    swapLanguage()
+    handleCloseNavMenu()
+  }
+
+  const pages = [[t('home'), '/writers-of-belarus'],
+  [t('writers'), '/writers-of-belarus/writers'],
+  [t('about'), '/writers-of-belarus/about']]
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
@@ -75,7 +96,7 @@ export default function SearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Box 
+          <Box
             sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'none' } }}
           >
             <IconButton
@@ -115,37 +136,61 @@ export default function SearchAppBar() {
                   </Typography>
                 </MenuItem>
               ))}
+              {
+                <MenuItem key={4} onClick={swapLanguageMenuWrapper}>
+
+                  <Typography
+                    textAlign="center"
+                  >
+                    { t('changeLng') }
+                  </Typography>
+                </MenuItem>
+              }
             </Menu>
           </Box>
           <Typography
-            variant="h6"
+            variant="body1"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             <Link
+              variant="h6"
               href="/writers-of-belarus/"
               sx={{
                 marginRight: 4
               }}
             >
-              Writers of Belarus
+              { t('title') }
             </Link>
             <Link
               href="/writers-of-belarus/about"
-              variant="body1"
               sx={{
                 marginRight: 2
               }}
             >
-              About
+              { t('about') }
             </Link>
             <Link
-              variant="body1"
               href="/writers-of-belarus/writers"
+              sx={{
+                marginRight: 2
+              }}
             >
-              Writers
+              { t('writers') }
             </Link>
+            <Button
+              variant="text"
+              color="inherit"
+              disableRipple
+              onClick={swapLanguage}
+              sx={{
+                fontSize: '1rem',
+                textTransform: 'none'
+              }}
+            >
+              { t('changeLng') }
+            </Button>
           </Typography>
           <Search>
             <SearchIconWrapper>

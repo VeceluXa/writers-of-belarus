@@ -1,25 +1,19 @@
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 
-export default function App() {
+export default function Loader() {
   return (
     <Box>
-      <CircularLoading />
+      <CircularProgress
+        size={70}
+        sx={{
+          position: "fixed",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 2
+        }}
+      />
     </Box>
   );
 }
-
-const CircularLoading = () => (
-  <>
-    <CircularProgress
-      size={70}
-      sx={{
-        position: "fixed",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-        zIndex: 2
-      }}
-    />
-  </>
-);

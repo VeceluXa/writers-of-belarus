@@ -22,12 +22,12 @@ export function Author(props: IAuthor) {
                         }}
                         onClick={() => window.open(props.link)}
                     />
-                    <Box style={{
-                        marginTop:'0.5em',
-                        textAlign:'center'
-                    }}>
-                        {props.name}
-                    </Box>
+                </Box>
+                <Box style={{
+                    marginTop:'0.5em',
+                    textAlign:'center'
+                }}>
+                    {props.name}
                 </Box>
             </Typography>
         </Container>
