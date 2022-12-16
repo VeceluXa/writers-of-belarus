@@ -25,7 +25,11 @@ export function Author(props: IAuthor) {
                 </Box>
                 <Box style={{
                     marginTop:'0.5em',
-                    textAlign:'center'
+                    textAlign:'center',
+                    fontStyle:'oblique',
+                    fontFamily:'Jira',
+                    fontSize:'1.2em',
+                    color:'rgba(0, 0, 0, 0.8)'
                 }}>
                     {props.name}
                 </Box>
