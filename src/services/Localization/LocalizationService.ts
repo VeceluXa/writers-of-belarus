@@ -12,7 +12,8 @@ export const resources = {
 } as const
 
 const detectionOptions = {
-  order: ['navigator'],
+  caches: ['localStorage'],
+  order: ['localStorage', 'navigator'],
   lookupFromPathIndex: 0
 }
 

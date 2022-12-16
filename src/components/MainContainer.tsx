@@ -21,7 +21,7 @@ export default function MainContainer({ children }: IMainContainerProps) {
                 maxWidth='md'
                 sx={{
                     paddingTop: 2,
-                    padding: 5,
+                    padding: { xs: 0.5, md: 5},
                     // justifyContent: 'center',
                     backgroundColor: theme.palette.background.paper
                     }}

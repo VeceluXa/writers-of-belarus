@@ -1,31 +1,56 @@
-import { Typography } from '@mui/material'
+import { Typography, useTheme } from '@mui/material'
 import Container from '@mui/material/Container'
+import { useTranslation } from 'react-i18next'
 
 export function About() {
-    return(
+    const { t, i18n } = useTranslation('main', { keyPrefix: 'about' })
+
+    const theme = useTheme()
+    theme.typography.h2 = {
+        fontSize: '2rem',
+        '@media (min-width:600px)': {
+            fontSize: '3.6rem',
+        }
+    }
+
+    return (
         <Container
             sx={{
-                marginBottom: 55
+                marginBottom: 20
             }}
         >
             <Typography
                 variant="h2"
                 align="center"
                 color="text.primary"
-                gutterBottom 
+                gutterBottom
                 sx={{
-                    fontStyle: 'oblique', 
+                    fontStyle: 'oblique',
                     fontWeight: 'medium',
                     textAlign: 'center'
                 }}
             >
-                Writers of Belarus
+                { t('title') }
             </Typography>
 
             <Typography
-                variant="h6" 
-                align="center" 
-                color="text.secondary" 
+                variant="h6"
+                align="center"
+                color="text.secondary"
+                paragraph
+                sx={{
+                    fontWeight: 'light',
+                    fontStyle: 'italic',
+                    textAlign: 'center'
+                }}
+            >
+                { t('paragraph') }
+            </Typography>
+
+            <Typography
+                variant="h5"
+                align="center"
+                color="text.secondary"
                 paragraph
                 sx={{
                     fontWeight: 'light',
@@ -34,25 +59,10 @@ export function About() {
                     textAlign: 'center'
                 }}
             >
-                Writers of Belarus is a free multilingual online encyclopedia of writers who contributed to Belarusian culture and history. It is written and maintained by 3 students of BSUIR, FCSN, Software in IT. The data is provided by free API from wikipedia.org. 
-                </Typography>
+                { t('header') }
+            </Typography>
 
-                <Typography
-                    variant="h5"
-                    align="center"
-                    color="text.secondary"
-                    paragraph
-                    sx={{
-                        fontWeight: 'light',
-                        fontStyle: 'italic',
-                        mx: 10,
-                        textAlign: 'center'
-                    }}
-                >
-                    Our website will help you immerse yourself in the world of Belarusian literature.
-                </Typography>
 
-                
         </Container>
     )
 }
