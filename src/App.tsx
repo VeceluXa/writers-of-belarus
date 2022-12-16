@@ -18,35 +18,35 @@ import i18n from './services/Localization/LocalizationService'
 const theme = createTheme(themeOptions);
 
 export default function App() {
-  return (
-    <I18nextProvider i18n={i18n}>
-      <ThemeProvider theme={theme}>
-        <div
-          style={{
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: theme.palette.background.default
-          }}
-        >
-          <Box
-            flex={0}
-          >
-            <Navigation/>
-          </Box>        
-          <Routes>
-            <Route path="/writers-of-belarus" element={ <HomePage/> }/>
-            <Route
-              path="/writers-of-belarus/writer"
-              element={<Navigate to="/writers-of-belarus/writers" replace />}
-            />
-            <Route path="/writers-of-belarus/writers" element={ <WritersPage/> }/>
-            <Route path="/writers-of-belarus/writer/:title" element={ <WriterPage/> }/>
-            <Route path="/writers-of-belarus/about" element={ <AboutPage/> }/>
-          </Routes>
-        </div>
-        
-      </ThemeProvider>
-    </I18nextProvider>
-  );
+    return (
+        <I18nextProvider i18n={i18n}>
+            <ThemeProvider theme={theme}>
+                <div
+                    style={{
+                        minHeight: '100vh',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        backgroundColor: theme.palette.background.default
+                    }}
+                >
+                    <Box
+                        flex={0}
+                    >
+                        <Navigation />
+                    </Box>
+                    <Routes>
+                        <Route path="/writers-of-belarus" element={<HomePage />} />
+                        <Route
+                            path="/writers-of-belarus/writer"
+                            element={<Navigate to="/writers-of-belarus/writers" replace />}
+                        />
+                        <Route path="/writers-of-belarus/writers" element={<WritersPage />} />
+                        <Route path="/writers-of-belarus/writer/:title" element={<WriterPage />} />
+                        <Route path="/writers-of-belarus/about" element={<AboutPage />} />
+                    </Routes>
+                </div>
+
+            </ThemeProvider>
+        </I18nextProvider>
+    );
 }

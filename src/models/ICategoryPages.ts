@@ -1,19 +1,19 @@
 export interface ICategoryPages {
-    batchcomplete: string
+    batchcomplete: string;
     continue: {
-        cmcontinue: string
-        continue: string
-    }
+        cmcontinue: string;
+        continue: string;
+    };
     limits: {
-        categorymembers: number
-    }
+        categorymembers: number;
+    };
     query: {
-        categorymembers: Array<ICategoryMember>
-    }
+        categorymembers: Array<ICategoryMember>;
+    };
 }
 
 export interface ICategoryMember {
-    pageid: number
-    ns: number
-    title: string
+    pageid: number;
+    ns: number;
+    title: string;
 }

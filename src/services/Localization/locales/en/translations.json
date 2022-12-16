@@ -18,9 +18,9 @@
             "header": "Our website will help you immerse yourself in the world of Belarusian literature."
         },
         "authors": {
-            "nameFyodor" : "Danilov Fyodor",
-            "nameVladimir" : "Bashlikov Vladimir",
-            "nameViktor" : "Bosko Viktor"
+            "nameFyodor": "Danilov Fyodor",
+            "nameVladimir": "Bashlikov Vladimir",
+            "nameViktor": "Bosko Viktor"
         },
         "writers": {
             "headerName": "Full Name"

@@ -3,7 +3,7 @@ import Container from '@mui/material/Container'
 import { useTranslation } from 'react-i18next'
 
 export function About() {
-    const { t, i18n } = useTranslation('main', { keyPrefix: 'about' })
+    const { t } = useTranslation('main', { keyPrefix: 'about' })
 
     const theme = useTheme()
     theme.typography.h2 = {
@@ -30,7 +30,7 @@ export function About() {
                     textAlign: 'center'
                 }}
             >
-                { t('title') }
+                {t('title')}
             </Typography>
 
             <Typography
@@ -44,7 +44,7 @@ export function About() {
                     textAlign: 'center'
                 }}
             >
-                { t('paragraph') }
+                {t('paragraph')}
             </Typography>
 
             <Typography
@@ -59,7 +59,7 @@ export function About() {
                     textAlign: 'center'
                 }}
             >
-                { t('header') }
+                {t('header')}
             </Typography>
 
 

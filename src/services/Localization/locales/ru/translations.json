@@ -18,9 +18,9 @@
             "header": "Наш сайт поможет Вам окунуться в мир белорусской литературы."
         },
         "authors": {
-            "nameFyodor" : "Данилов Фёдор",
-            "nameVladimir" : "Башлыков Владимир",
-            "nameViktor" : "Босько Виктор"
+            "nameFyodor": "Данилов Фёдор",
+            "nameVladimir": "Башлыков Владимир",
+            "nameViktor": "Босько Виктор"
         },
         "writers": {
             "headerName": "ФИО"

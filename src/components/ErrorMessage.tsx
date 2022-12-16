@@ -6,14 +6,14 @@ interface ErrorMessageProps {
 }
 
 export function ErrorMessage({ error }: ErrorMessageProps) {
-    return(
+    return (
         <MainContainer>
             <Typography
                 sx={{
                     color: 'theme.palette.error.main'
                 }}
             >
-                { error }
+                {error}
             </Typography>
         </MainContainer>
     )

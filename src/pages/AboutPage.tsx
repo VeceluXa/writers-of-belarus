@@ -3,10 +3,10 @@ import { Authors } from "../components/Authors"
 import MainContainer from "../components/MainContainer"
 
 export function AboutPage() {
-    return(
+    return (
         <MainContainer>
-            <About/>
-            <Authors/>
+            <About />
+            <Authors />
         </MainContainer>
     )
 }

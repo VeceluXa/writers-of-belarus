@@ -1,10 +1,9 @@
 export interface IPage {
     parse: {
-        title: string
-        pageid: number
+        title: string;
+        pageid: number;
         text: {
-            "*": string
-        }
-    }
+            "*": string;
+        };
+    };
 }
-

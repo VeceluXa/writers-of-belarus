@@ -9,9 +9,8 @@ interface IMainContainerProps {
 
 export default function MainContainer({ children }: IMainContainerProps) {
     const theme = useTheme();
-    // console.log(theme);
-    
-    return(
+
+    return (
         <Box
             flex={1}
             overflow="auto"
@@ -21,12 +20,11 @@ export default function MainContainer({ children }: IMainContainerProps) {
                 maxWidth='md'
                 sx={{
                     paddingTop: 2,
-                    padding: { xs: 0.5, md: 5},
-                    // justifyContent: 'center',
+                    padding: { xs: 0.5, md: 5 },
                     backgroundColor: theme.palette.background.paper
-                    }}
+                }}
             >
-                { children && children }
+                {children && children}
             </Container>
         </Box>
     )

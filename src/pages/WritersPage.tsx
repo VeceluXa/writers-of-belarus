@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ErrorMessage } from "../components/ErrorMessage";
 import Loader from '../components/Loader'
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 
 interface IRow {
     id: number,
@@ -19,22 +19,22 @@ export function WritersPage() {
     var { pages, error, loading } = useCategoryPages()
     const navigate = useNavigate();
 
-    const handleLanguageChanged = useCallback(() => {
-        window.location.reload()
-    }, []);
-    
     useEffect(() => {
-        i18n.on('languageChanged', handleLanguageChanged);
+        console.log('Mounted Writers page')
+        i18n.on('languageChanged', () => {
+            window.location.reload()
+        })
         return () => {
-            i18n.off('languageChanged', handleLanguageChanged);
+            console.log('Unmounted Writers page')
+            i18n.off('languageChanged');
         };
-    }, [handleLanguageChanged]);
+    });
 
     function toRow(pages: ICategoryMember[]) {
         let rows: IRow[] = []
         if (pages) {
             pages.forEach((it, index) => {
-                rows.push({'id': index, 'name': it.title})
+                rows.push({ 'id': index, 'name': it.title })
             })
         }
         return rows
@@ -49,17 +49,17 @@ export function WritersPage() {
 
     const gridLocale = () => {
         var locale = enUS.components.MuiDataGrid.defaultProps.localeText
-        if (i18n.language === 'ru') 
+        if (i18n.language === 'ru')
             locale = ruRU.components.MuiDataGrid.defaultProps.localeText
         return locale
     }
-      
+
 
     return (
         <MainContainer>
-            {loading && <Loader/>}
-            {error && <ErrorMessage error={error}/>}
-            {pages && 
+            {loading && <Loader />}
+            {error && <ErrorMessage error={error} />}
+            {pages &&
                 <DataGrid
                     localeText={gridLocale()}
                     onRowClick={handleRowClick}
