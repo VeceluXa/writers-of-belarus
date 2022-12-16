@@ -8,13 +8,10 @@ export function Authors() {
     return(
         <Container>
             <Box style={{
-                WebkitColumnCount:'3',
-                columnCount:'3',
-                columnWidth:'7em',
-                columns:'15em',
-                display:'block',
+                display:'flex',
                 marginTop:'5em',
-
+                flex:'auto',
+                flexWrap:'wrap'
             }}>
                 {data.map(author =>
                     <Author path={author.path} name={author.name} link={author.link}/>
