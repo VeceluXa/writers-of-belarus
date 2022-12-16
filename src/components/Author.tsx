@@ -7,11 +7,10 @@ export function Author(props: IAuthor) {
 
     return (
         <Container style={{height:'15em', width:'12.5em'}}>
-            <Typography>
                 <Box style={{height:'9.em', width:'9.4em'}}>
                     <img
                         src={props.path}
-                        alt="Danilov Fedor"
+                        alt={props.name}
                         height={'150em'}
                         width={'150em'}
                         style={{
@@ -24,16 +23,18 @@ export function Author(props: IAuthor) {
                     />
                 </Box>
                 <Box style={{
-                    marginTop:'0.5em',
-                    textAlign:'center',
-                    fontStyle:'oblique',
-                    fontFamily:'Jira',
-                    fontSize:'1.2em',
-                    color:'rgba(0, 0, 0, 0.8)'
+                    marginTop:'0.5em'
                 }}>
-                    {props.name}
+                    <Typography style={{
+                        textAlign:'center',
+                        fontStyle:'oblique',
+                        fontFamily:'Jira',
+                        fontSize:'1.2em',
+                        color:'rgba(0, 0, 0, 0.8)'
+                    }}>
+                        {props.name}
+                    </Typography>
                 </Box>
-            </Typography>
         </Container>
     )
 }
