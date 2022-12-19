@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import {ICategoryMember} from "../models/ICategoryPages";
 import {useCategoryPages} from "../hooks/CategoryPagesFetch"
 import {EventHandler, useState} from "react";
+import Container from "@mui/material/Container";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -112,7 +113,7 @@ export default function SearchAppBar() {
                 data.push(elem)
             )
         }
-        let tmp: ICategoryMember[];
+        let tmp: ICategoryMember[] = []
 
         pages?.forEach((elem) => {
             let index = 0
@@ -122,17 +123,34 @@ export default function SearchAppBar() {
                     break;
                 }
             }
-            if (elem.title == name || elem.title.substring(0, index + 1) == name) {
-                tmp.push(elem)
+            if (elem.title.toLowerCase() == name.toLowerCase() ||
+                elem.title.toLowerCase().substring(0, index + 1) == name.toLowerCase()) {
+                //console.log("elem = ", elem)
+                tmp.push({pageid: elem.pageid, title: elem.title, ns: elem.ns})
             }
         })
 
         if (tmp! != null) {
-            console.log(tmp)
+            tmp.forEach((elem) => {
+                console.log("elem = ", elem);
+            })
             return (
-                <Box>
-
-                </Box>
+               <Container>
+                   {tmp.map((it) =>
+                       <Box
+                           onClick={() => window.open(`/writers-of-belarus/writer/${it.title}`)}
+                           style={{
+                               textAlign: 'center',
+                               fontStyle: 'oblique',
+                               fontFamily: 'Jira',
+                               fontSize: '2em',
+                               cursor: 'pointer',
+                               color: 'rgba(0, 0, 0, 0.8)'
+                           }}
+                       >
+                           {it.title}
+                       </Box>)}
+               </Container>
             )
         } else  {
             return (<></>)
@@ -248,10 +266,10 @@ export default function SearchAppBar() {
                             id={'input'}
                             onChange={updateInput}
                         />
-                        {UpdateOutput()}
                     </Search>
                 </Toolbar>
             </AppBar>
+            {UpdateOutput()}
         </Box>
     );
 }
