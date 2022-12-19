@@ -10,7 +10,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import {Button, Input, Table} from '@mui/material';
+import {Button} from '@mui/material';
 import Link from './Link';
 import { useTranslation } from 'react-i18next';
 import {ICategoryMember} from "../models/ICategoryPages";
@@ -100,9 +100,10 @@ export default function SearchAppBar() {
 
     //Input state
     const [name, setName] = useState("")
+
+    //Updating and check input
     const updateInput = (event: any) => {
         setName(event.target.value)
-        console.log(name)
     }
     const UpdateOutput = () => {
         const {pages, error, loading} = useCategoryPages();
@@ -124,30 +125,25 @@ export default function SearchAppBar() {
                 }
             }
             if (elem.title.toLowerCase() == name.toLowerCase() ||
-                elem.title.toLowerCase().substring(0, index + 1) == name.toLowerCase() ||
-                elem.title.toLowerCase().substring(0, 3) == name.toLowerCase().substring(0, 3) ||
-                elem.title.toLowerCase().substring(0, 2) == name.toLowerCase().substring(0, 2) ||
-                elem.title.toLowerCase().substring(0, 1) == name.toLowerCase().substring(0, 1)) {
-                //console.log("elem = ", elem)
+                elem.title.toLowerCase().substring(0, index) == name.toLowerCase() ||
+                elem.title.toLowerCase().substring(0, 3) == name.toLowerCase().substring(0, 3) && name.length <= 3 ||
+                elem.title.toLowerCase().substring(0, 2) == name.toLowerCase().substring(0, 2) && name.length <= 2 ||
+                elem.title.toLowerCase().substring(0, 1) == name.toLowerCase().substring(0, 1) && name.length <= 1 ) {
                 tmp.push({pageid: elem.pageid, title: elem.title, ns: elem.ns})
             }
         })
 
         if (tmp! != null) {
-            tmp.forEach((elem) => {
-                console.log("elem = ", elem);
-            })
             return (
+                //TODO()
                <Container style={{
-                   width:'30ch',
+                   width:'16%',
+                   marginLeft:'60%',
                    position:'absolute',
-                   padding:'0px',
                    textAlign:"left",
                    paddingRight:'1px',
-                   borderRadius:'10px',
-                   WebkitBoxShadow:'5px 6px 200px grey',
-                   borderBottomRightRadius:'10px',
-                   borderBottomLeftRadius:'10px'
+                   paddingLeft:'1px',
+                   WebkitBoxShadow:'5px 6px 200px grey'
                }}>
                    {tmp.map((it) =>
                        <Box
@@ -287,7 +283,12 @@ export default function SearchAppBar() {
                     </Search>
                 </Toolbar>
             </AppBar>
-            <UpdateOutput/>
+            <Container style={{
+                marginLeft:'opx',
+                marginRight:'inherit',
+            }}>
+                <UpdateOutput/>
+            </Container>
         </Box>
     );
 }
