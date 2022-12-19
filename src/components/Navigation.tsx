@@ -115,6 +115,8 @@ export default function SearchAppBar() {
             )
         }
         let tmp: ICategoryMember[] = []
+        pages?.sort((a, b) => a.title.localeCompare(b.title))
+        console.log(pages)
 
         pages?.forEach((elem) => {
             let index = 0
@@ -136,7 +138,6 @@ export default function SearchAppBar() {
         })
 
         if (tmp! != null) {
-            console.log(tmp)
             return (
                 //TODO()
                <Container style={{
