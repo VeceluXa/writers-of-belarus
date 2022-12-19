@@ -124,7 +124,10 @@ export default function SearchAppBar() {
                 }
             }
             if (elem.title.toLowerCase() == name.toLowerCase() ||
-                elem.title.toLowerCase().substring(0, index + 1) == name.toLowerCase()) {
+                elem.title.toLowerCase().substring(0, index + 1) == name.toLowerCase() ||
+                elem.title.toLowerCase().substring(0, 3) == name.toLowerCase().substring(0, 3) ||
+                elem.title.toLowerCase().substring(0, 2) == name.toLowerCase().substring(0, 2) ||
+                elem.title.toLowerCase().substring(0, 1) == name.toLowerCase().substring(0, 1)) {
                 //console.log("elem = ", elem)
                 tmp.push({pageid: elem.pageid, title: elem.title, ns: elem.ns})
             }
@@ -135,20 +138,35 @@ export default function SearchAppBar() {
                 console.log("elem = ", elem);
             })
             return (
-               <Container>
+               <Container style={{
+                   width:'30ch',
+                   position:'absolute',
+                   padding:'0px',
+                   textAlign:"left",
+                   paddingRight:'1px',
+                   borderRadius:'10px',
+                   WebkitBoxShadow:'5px 6px 200px grey',
+                   borderBottomRightRadius:'10px',
+                   borderBottomLeftRadius:'10px'
+               }}>
                    {tmp.map((it) =>
                        <Box
                            onClick={() => window.open(`/writers-of-belarus/writer/${it.title}`)}
                            style={{
                                textAlign: 'center',
                                fontStyle: 'oblique',
-                               fontFamily: 'Jira',
-                               fontSize: '2em',
+                               fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                               fontSize: '1.4em',
                                cursor: 'pointer',
-                               color: 'rgba(0, 0, 0, 0.8)'
+                               color: 'rgba(255, 255, 255, 100)',
+                               backgroundColor: 'rgba(0, 0, 0, 0.87)',
+                               borderBlock:'ActiveBorder',
+                               padding:'2px'
                            }}
                        >
-                           {it.title}
+                           <Typography textAlign={'left'}>
+                                {it.title}
+                           </Typography>
                        </Box>)}
                </Container>
             )
@@ -269,7 +287,7 @@ export default function SearchAppBar() {
                     </Search>
                 </Toolbar>
             </AppBar>
-            {UpdateOutput()}
+            <UpdateOutput/>
         </Box>
     );
 }
