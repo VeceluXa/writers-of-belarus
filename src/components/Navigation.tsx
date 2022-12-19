@@ -126,6 +126,8 @@ export default function SearchAppBar() {
             }
             if (elem.title.toLowerCase() == name.toLowerCase() ||
                 elem.title.toLowerCase().substring(0, index) == name.toLowerCase() ||
+                elem.title.toLowerCase().substring(0, 5) == name.toLowerCase().substring(0, 5) && name.length <= 5 ||
+                elem.title.toLowerCase().substring(0, 4) == name.toLowerCase().substring(0, 4) && name.length <= 4 ||
                 elem.title.toLowerCase().substring(0, 3) == name.toLowerCase().substring(0, 3) && name.length <= 3 ||
                 elem.title.toLowerCase().substring(0, 2) == name.toLowerCase().substring(0, 2) && name.length <= 2 ||
                 elem.title.toLowerCase().substring(0, 1) == name.toLowerCase().substring(0, 1) && name.length <= 1 ) {
@@ -134,6 +136,7 @@ export default function SearchAppBar() {
         })
 
         if (tmp! != null) {
+            console.log(tmp)
             return (
                 //TODO()
                <Container style={{
