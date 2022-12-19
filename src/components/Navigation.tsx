@@ -10,9 +10,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { Button } from '@mui/material';
+import {Button, Input, Table} from '@mui/material';
 import Link from './Link';
 import { useTranslation } from 'react-i18next';
+import {ICategoryMember} from "../models/ICategoryPages";
+import {useCategoryPages} from "../hooks/CategoryPagesFetch"
+import {EventHandler, useState} from "react";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -42,6 +45,8 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
+    input:'onInput',
+    name:'input',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
@@ -55,6 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             },
         },
     },
+    rows:'IRow'
 }));
 
 export default function SearchAppBar() {
@@ -74,7 +80,7 @@ export default function SearchAppBar() {
         handleCloseNavMenu()
     }
 
-    const pages = [[t('home'), '/writers-of-belarus'],
+    const pagess = [[t('home'), '/writers-of-belarus'],
     [t('writers'), '/writers-of-belarus/writers'],
     [t('about'), '/writers-of-belarus/about']]
 
@@ -90,6 +96,49 @@ export default function SearchAppBar() {
     const handleCloseNavMenuId = (id: number) => {
         setAnchorElNav(null);
     };
+
+    //Input state
+    const [name, setName] = useState("")
+    const updateInput = (event: any) => {
+        setName(event.target.value)
+        console.log(name)
+    }
+    const UpdateOutput = () => {
+        const {pages, error, loading} = useCategoryPages();
+        let data: ICategoryMember[];
+
+        if (pages && !error && loading) {
+            pages.map((elem) =>
+                data.push(elem)
+            )
+        }
+        let tmp: ICategoryMember[];
+
+        pages?.forEach((elem) => {
+            let index = 0
+            for (let i = 0; i < elem.title.length; i++) {
+                if (elem.title[i] == ' ') {
+                    index = i
+                    break;
+                }
+            }
+            if (elem.title == name || elem.title.substring(0, index + 1) == name) {
+                tmp.push(elem)
+            }
+        })
+
+        if (tmp! != null) {
+            console.log(tmp)
+            return (
+                <Box>
+
+                </Box>
+            )
+        } else  {
+            return (<></>)
+        }
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -125,7 +174,7 @@ export default function SearchAppBar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
+                            {pagess.map((page) => (
                                 <MenuItem key={page[0]} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">
                                         <Link href={`${page[1]}`}>
@@ -196,9 +245,10 @@ export default function SearchAppBar() {
                             <SearchIcon />
                         </SearchIconWrapper>
                         <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
+                            id={'input'}
+                            onChange={updateInput}
                         />
+                        {UpdateOutput()}
                     </Search>
                 </Toolbar>
             </AppBar>
