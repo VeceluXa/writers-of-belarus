@@ -10,9 +10,13 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { Button } from '@mui/material';
+import {Button} from '@mui/material';
 import Link from './Link';
 import { useTranslation } from 'react-i18next';
+import {ICategoryMember} from "../models/ICategoryPages";
+import {useCategoryPages} from "../hooks/CategoryPagesFetch"
+import {EventHandler, useState} from "react";
+import Container from "@mui/material/Container";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -42,6 +46,8 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
+    input:'onInput',
+    name:'input',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
@@ -55,6 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             },
         },
     },
+    rows:'IRow'
 }));
 
 export default function SearchAppBar() {
@@ -74,7 +81,7 @@ export default function SearchAppBar() {
         handleCloseNavMenu()
     }
 
-    const pages = [[t('home'), '/writers-of-belarus'],
+    const pagess = [[t('home'), '/writers-of-belarus'],
     [t('writers'), '/writers-of-belarus/writers'],
     [t('about'), '/writers-of-belarus/about']]
 
@@ -90,6 +97,84 @@ export default function SearchAppBar() {
     const handleCloseNavMenuId = (id: number) => {
         setAnchorElNav(null);
     };
+
+    //Input state
+    const [name, setName] = useState("")
+
+    //Updating and check input
+    const updateInput = (event: any) => {
+        setName(event.target.value)
+    }
+    const UpdateOutput = () => {
+        const {pages, error, loading} = useCategoryPages();
+        let data: ICategoryMember[];
+
+        if (pages && !error && loading) {
+            pages.map((elem) =>
+                data.push(elem)
+            )
+        }
+        let tmp: ICategoryMember[] = []
+        pages?.sort((a, b) => a.title.localeCompare(b.title))
+        console.log(pages)
+
+        pages?.forEach((elem) => {
+            let index = 0
+            for (let i = 0; i < elem.title.length; i++) {
+                if (elem.title[i] == ' ') {
+                    index = i
+                    break;
+                }
+            }
+            if (elem.title.toLowerCase() == name.toLowerCase() ||
+                elem.title.toLowerCase().substring(0, index) == name.toLowerCase() ||
+                elem.title.toLowerCase().substring(0, 5) == name.toLowerCase().substring(0, 5) && name.length <= 5 ||
+                elem.title.toLowerCase().substring(0, 4) == name.toLowerCase().substring(0, 4) && name.length <= 4 ||
+                elem.title.toLowerCase().substring(0, 3) == name.toLowerCase().substring(0, 3) && name.length <= 3 ||
+                elem.title.toLowerCase().substring(0, 2) == name.toLowerCase().substring(0, 2) && name.length <= 2 ||
+                elem.title.toLowerCase().substring(0, 1) == name.toLowerCase().substring(0, 1) && name.length <= 1 ) {
+                tmp.push({pageid: elem.pageid, title: elem.title, ns: elem.ns})
+            }
+        })
+
+        if (tmp! != null) {
+            return (
+                //TODO()
+               <Container style={{
+                   width:'16%',
+                   marginLeft:'60%',
+                   position:'absolute',
+                   textAlign:"left",
+                   paddingRight:'1px',
+                   paddingLeft:'1px',
+                   WebkitBoxShadow:'5px 6px 200px grey'
+               }}>
+                   {tmp.map((it) =>
+                       <Box
+                           onClick={() => window.open(`/writers-of-belarus/writer/${it.title}`)}
+                           style={{
+                               textAlign: 'center',
+                               fontStyle: 'oblique',
+                               fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                               fontSize: '1.4em',
+                               cursor: 'pointer',
+                               color: 'rgba(255, 255, 255, 100)',
+                               backgroundColor: 'rgba(0, 0, 0, 0.87)',
+                               borderBlock:'ActiveBorder',
+                               padding:'2px'
+                           }}
+                       >
+                           <Typography textAlign={'left'}>
+                                {it.title}
+                           </Typography>
+                       </Box>)}
+               </Container>
+            )
+        } else  {
+            return (<></>)
+        }
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -125,7 +210,7 @@ export default function SearchAppBar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
+                            {pagess.map((page) => (
                                 <MenuItem key={page[0]} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">
                                         <Link href={`${page[1]}`}>
@@ -196,12 +281,18 @@ export default function SearchAppBar() {
                             <SearchIcon />
                         </SearchIconWrapper>
                         <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
+                            id={'input'}
+                            onChange={updateInput}
                         />
                     </Search>
                 </Toolbar>
             </AppBar>
+            <Container style={{
+                marginLeft:'opx',
+                marginRight:'inherit',
+            }}>
+                <UpdateOutput/>
+            </Container>
         </Box>
     );
 }
