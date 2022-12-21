@@ -9,16 +9,11 @@ import InputBase from '@mui/material/InputBase';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import {Button} from '@mui/material';
+import {Autocomplete, Button, TextField} from '@mui/material';
 import Link from './Link';
 import { useTranslation } from 'react-i18next';
-import {ICategoryMember} from "../models/ICategoryPages";
 import {useCategoryPages} from "../hooks/CategoryPagesFetch"
-import {EventHandler, useState} from "react";
-import Container from "@mui/material/Container";
-
-
+import {useState} from "react";
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -27,14 +22,14 @@ const Search = styled('div')(({ theme }) => ({
         backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
-    width: '100%',
+    width: '83%',
+    height: 56,
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
         width: 'auto',
     },
 }));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
@@ -43,8 +38,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'center',
 }));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
+styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     input:'onInput',
     name:'input',
@@ -62,7 +56,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         },
     },
 }));
-
 export default function SearchAppBar() {
     const { t, i18n } = useTranslation('main', { keyPrefix: 'nav' })
 
@@ -81,8 +74,8 @@ export default function SearchAppBar() {
     }
 
     const pagess = [[t('home'), '/writers-of-belarus'],
-    [t('writers'), '/writers-of-belarus/writers'],
-    [t('about'), '/writers-of-belarus/about']]
+        [t('writers'), '/writers-of-belarus/writers'],
+        [t('about'), '/writers-of-belarus/about']]
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
@@ -93,85 +86,44 @@ export default function SearchAppBar() {
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
-    const handleCloseNavMenuId = (id: number) => {
-        setAnchorElNav(null);
-    };
-
-    //Input state
-    const [name, setName] = useState("")
-
-    //Updating and check input
-    const updateInput = (event: any) => {
-        setName(event.target.value)
-    }
-
     const UpdateOutput = () => {
         const {pages, error, loading} = useCategoryPages();
-        let data: ICategoryMember[];
 
-        if (pages && !error && loading) {
-            pages.map((elem) =>
-                data.push(elem)
-            )
+        console.log("pages = ", pages)
+
+        let tmp: {label: string, id: number}[] = []
+
+        console.log("pages = ", pages, "error = ", error, "load = ", loading)
+
+        if (pages && !error && !loading) {
+            pages?.sort((a, b) => a.title.localeCompare(b.title))
+            let index = 1;
+
+
+            pages?.forEach((elem) => {
+                console.log("push = ", elem.title)
+                tmp.push({label: elem.title, id: index})
+                index++;
+            })
         }
-        let tmp: ICategoryMember[] = []
-        pages?.sort((a, b) => a.title.localeCompare(b.title))
-        // console.log(pages)
 
-        let index = 0
-        pages?.forEach((elem) => {
-            if (name != "") {
-                if (elem.title.toLowerCase().substring(0, name.length) == name) {
-                    if (index > 23) {
-                        return
-                    }
-                    tmp.push({pageid: elem.pageid, title: elem.title, ns: elem.ns})
-                    index++
-                }
-            }
-        })
-
-        if (tmp! != null) {
-            return (
-                //TODO()
-               <Container style={{
-                   width:'15.5%',
-                   position:'absolute',
-                   textAlign:"left",
-                   paddingRight:'1px',
-                   paddingLeft:'1px',
-                   WebkitBoxShadow:'5px 6px 200px grey',
-                   marginLeft:'83%'
-               }}>
-                   {tmp.map((it ) =>
-                       <Box
-                           onClick={() => window.open(`/writers-of-belarus/writer/${it.title}`)}
-                           style={{
-                               textAlign: 'center',
-                               fontStyle: 'oblique',
-                               fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-                               fontSize: '1.4em',
-                               cursor: 'pointer',
-                               color: 'rgba(255, 255, 255, 100)',
-                               backgroundColor: 'rgba(0, 0, 0, 0.87)',
-                               padding:'2px',
-                           }}
-                       >
-                           <Typography textAlign={'left'}>
-                                {it.title}
-                           </Typography>
-                       </ Box>)}
-               </Container>
-            )
-        } else  {
-            return (<></>)
+        if (tmp != null) {
+            console.log("tmp = ", tmp)
+            return tmp
         }
+        else
+            return [{label: "do not found", id: 1}]
     }
+
+    const writers: {label: string, id: number}[] = UpdateOutput()
+    const [inputValue, setInputValue] = useState("")
 
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar style={{
+                    minHeight:'70px'
+                }}>
                     <Box
                         sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'none' } }}
                     >
@@ -270,17 +222,33 @@ export default function SearchAppBar() {
                         </Button>
                     </Typography>
                     <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            id={'input'}
-                            onChange={updateInput}
+                        <Autocomplete
+                            freeSolo
+                            color='rgba(255, 255, 255, 100)'
+                            title={"Writers"}
+                            id="combo-box-demo"
+                            options={writers}
+                            sx={{ width: 270, height: 50}}
+                            inputValue={inputValue}
+                            renderInput={(params) => <TextField {...params}
+                                                                label="Writers"
+                                                                color={"success"}/>}
+                            onChange={(event, value, reason, details) => {
+                                writers.forEach((writer) => {
+                                    if (writer == value) {
+                                        setInputValue(value.label)
+                                    }
+                                })
+                            }
+                            }
+                            onKeyPressCapture={(event: any) => {
+                                if (event.code == 'Enter')
+                                    window.open(`/writers-of-belarus/writer/${inputValue}`)
+                            }}
                         />
                     </Search>
                 </Toolbar>
             </AppBar>
-            <UpdateOutput/>
         </Box>
     );
 }
