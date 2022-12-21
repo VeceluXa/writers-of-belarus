@@ -19,11 +19,25 @@ class LinkFilter extends Filter {
             );
         }
 
+        if (name === "table" && node.classList[0] === "box-Multiple_issues") {
+            return null;
+        }
+
+        if (name === "table" && node.classList[0] === "box-No_footnotes") {
+            return null;
+        }
+
+        if (name === "table" && node.classList[0] === "box-Expand_language") {
+            return null;
+        }
+        
+        if (name === "div" && node.classList[0] === "side-box") {
+            return null;
+        }
+
         if (name === "a") {
             node.removeAttribute("href");
             node.removeAttribute("title");
-            // console.log(`${node.childNodes[0].textContent}`)
-            // node.replaceWith(`${node.childNodes[0].textContent}`)
         }
 
         if (name === "span" && node.classList[0] === "mw-editsection") {
