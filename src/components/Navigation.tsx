@@ -20,11 +20,8 @@ const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
     marginLeft: 0,
-    width: '83%',
+    width: '90%',
     height: 56,
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
@@ -127,7 +124,7 @@ export default function SearchAppBar() {
                     minHeight:'70px'
                 }}>
                     <Box
-                        sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'none' } }}
+                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                     >
                         <IconButton
                             size="large"
@@ -196,6 +193,7 @@ export default function SearchAppBar() {
                         <Link
                             href="/writers-of-belarus/about"
                             sx={{
+                                display: { sm: 'none', md: 'inline' },
                                 marginRight: 2
                             }}
                         >
@@ -204,6 +202,7 @@ export default function SearchAppBar() {
                         <Link
                             href="/writers-of-belarus/writers"
                             sx={{
+                                display: { sm: 'none', md: 'inline' },
                                 marginRight: 2
                             }}
                         >
@@ -215,6 +214,7 @@ export default function SearchAppBar() {
                             disableRipple
                             onClick={swapLanguage}
                             sx={{
+                                display: { sm: 'none', md: 'inline' },
                                 padding: '0',
                                 fontSize: '1rem',
                                 textTransform: 'none'
@@ -223,15 +223,27 @@ export default function SearchAppBar() {
                             {t('changeLng')}
                         </Button>
                     </Typography>
-                    <Search>
+                    <Search
+                        sx={{
+                            backgroundColor: 'background.paper',
+                            bgcolor:'background.paper'
+                        }}
+                    >
                         <Autocomplete
-                            color='rgba(255, 255, 255, 100)'
+                            color='background.paper'
                             title={"Writers"}
                             id="combo-box-demo"
                             options={writers}
-                            sx={{ width: 270, height: 50}}
+                            sx={{ 
+                                width: 'auto',
+                                minWidth: 270, 
+                                height: 50, 
+                                color: 'background.paper',
+                                // bgcolor: 'transpa',
+                                
+                            }}
                             autoComplete={true}
-                            renderInput={(params) => <TextField {...params} label="Writers"/>}
+                            renderInput={(params) => <TextField {...params} label={t('search')}/>}
                             onChange={(event, value, reason, details) => {
                                 writers.forEach((writer) => {
                                     if (writer == value) {
