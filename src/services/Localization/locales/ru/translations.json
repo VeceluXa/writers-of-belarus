@@ -27,7 +27,8 @@
             "headerName": "ФИО"
         },
         "writer-of-the-day": {
-            "header": "Писатель дня"
+            "header": "Писатель дня",
+            "button": "Подробнее"
         }
     }
 }

@@ -27,7 +27,8 @@
             "headerName": "Full Name"
         },
         "writer-of-the-day": {
-            "header": "Writer of the day"
+            "header": "Writer of the day",
+            "button": "More"
         }
     }
 }
