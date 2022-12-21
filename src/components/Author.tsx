@@ -6,7 +6,13 @@ import Box from "@mui/material/Box";
 export function Author(props: IAuthor) {
 
     return (
-        <Container style={{ height: '15em', width: '12.5em' }}>
+        <Box 
+            style={{ height: '15em', width: '12.5em' }}
+            display='flex'
+            alignItems='center'
+            flexDirection='column'
+            margin='auto'
+        >
             <Box 
                 style={{ height: '9.em', width: '10.5em' }}
                 display='flex'
@@ -39,6 +45,6 @@ export function Author(props: IAuthor) {
                     {props.name}
                 </Typography>
             </Box>
-        </Container>
+        </Box>
     )
 }
