@@ -61,7 +61,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             },
         },
     },
-    rows:'IRow'
 }));
 
 export default function SearchAppBar() {
@@ -105,6 +104,7 @@ export default function SearchAppBar() {
     const updateInput = (event: any) => {
         setName(event.target.value)
     }
+
     const UpdateOutput = () => {
         const {pages, error, loading} = useCategoryPages();
         let data: ICategoryMember[];
@@ -118,22 +118,16 @@ export default function SearchAppBar() {
         pages?.sort((a, b) => a.title.localeCompare(b.title))
         console.log(pages)
 
+        let index = 0
         pages?.forEach((elem) => {
-            let index = 0
-            for (let i = 0; i < elem.title.length; i++) {
-                if (elem.title[i] == ' ') {
-                    index = i
-                    break;
+            if (name != "") {
+                if (elem.title.toLowerCase().substring(0, name.length) == name) {
+                    if (index > 23) {
+                        return
+                    }
+                    tmp.push({pageid: elem.pageid, title: elem.title, ns: elem.ns})
+                    index++
                 }
-            }
-            if (elem.title.toLowerCase() == name.toLowerCase() ||
-                elem.title.toLowerCase().substring(0, index) == name.toLowerCase() ||
-                elem.title.toLowerCase().substring(0, 5) == name.toLowerCase().substring(0, 5) && name.length <= 5 ||
-                elem.title.toLowerCase().substring(0, 4) == name.toLowerCase().substring(0, 4) && name.length <= 4 ||
-                elem.title.toLowerCase().substring(0, 3) == name.toLowerCase().substring(0, 3) && name.length <= 3 ||
-                elem.title.toLowerCase().substring(0, 2) == name.toLowerCase().substring(0, 2) && name.length <= 2 ||
-                elem.title.toLowerCase().substring(0, 1) == name.toLowerCase().substring(0, 1) && name.length <= 1 ) {
-                tmp.push({pageid: elem.pageid, title: elem.title, ns: elem.ns})
             }
         })
 
@@ -141,15 +135,15 @@ export default function SearchAppBar() {
             return (
                 //TODO()
                <Container style={{
-                   width:'16%',
-                   marginLeft:'60%',
+                   width:'15.5%',
                    position:'absolute',
                    textAlign:"left",
                    paddingRight:'1px',
                    paddingLeft:'1px',
-                   WebkitBoxShadow:'5px 6px 200px grey'
+                   WebkitBoxShadow:'5px 6px 200px grey',
+                   marginLeft:'83%'
                }}>
-                   {tmp.map((it) =>
+                   {tmp.map((it ) =>
                        <Box
                            onClick={() => window.open(`/writers-of-belarus/writer/${it.title}`)}
                            style={{
@@ -160,14 +154,13 @@ export default function SearchAppBar() {
                                cursor: 'pointer',
                                color: 'rgba(255, 255, 255, 100)',
                                backgroundColor: 'rgba(0, 0, 0, 0.87)',
-                               borderBlock:'ActiveBorder',
-                               padding:'2px'
+                               padding:'2px',
                            }}
                        >
                            <Typography textAlign={'left'}>
                                 {it.title}
                            </Typography>
-                       </Box>)}
+                       </ Box>)}
                </Container>
             )
         } else  {
@@ -287,12 +280,7 @@ export default function SearchAppBar() {
                     </Search>
                 </Toolbar>
             </AppBar>
-            <Container style={{
-                marginLeft:'opx',
-                marginRight:'inherit',
-            }}>
-                <UpdateOutput/>
-            </Container>
+            <UpdateOutput/>
         </Box>
     );
 }
