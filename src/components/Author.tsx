@@ -7,7 +7,11 @@ export function Author(props: IAuthor) {
 
     return (
         <Container style={{ height: '15em', width: '12.5em' }}>
-            <Box style={{ height: '9.em', width: '9.4em' }}>
+            <Box 
+                style={{ height: '9.em', width: '10.5em' }}
+                display='flex'
+                justifyContent='center'
+            >
                 <img
                     src={props.path}
                     alt={props.name}

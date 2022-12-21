@@ -4,7 +4,7 @@ import { usePage } from "../hooks/WriterPageFetch";
 import Loader from "../components/Loader";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { Interweave } from "interweave";
-import InterweaveFilter from '../hooks/InterweaveFilter'
+import InterweaveFilter from '../hooks/WriterFilter'
 import { useTranslation } from "react-i18next";
 
 export function WriterPage() {
