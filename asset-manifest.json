@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/writers-of-belarus/static/css/main.40606baa.css",
-    "main.js": "/writers-of-belarus/static/js/main.0051f19d.js",
+    "main.js": "/writers-of-belarus/static/js/main.3a78834f.js",
     "static/js/787.25ed0022.chunk.js": "/writers-of-belarus/static/js/787.25ed0022.chunk.js",
     "static/media/imgFedya.png": "/writers-of-belarus/static/media/imgFedya.a3835ba1e5c4bba56754.png",
     "static/media/imgVitya.png": "/writers-of-belarus/static/media/imgVitya.0b021e68275e7142d9a4.png",
     "static/media/imgVova.png": "/writers-of-belarus/static/media/imgVova.2fa0973f435664f52a7e.png",
     "index.html": "/writers-of-belarus/index.html",
     "main.40606baa.css.map": "/writers-of-belarus/static/css/main.40606baa.css.map",
-    "main.0051f19d.js.map": "/writers-of-belarus/static/js/main.0051f19d.js.map",
+    "main.3a78834f.js.map": "/writers-of-belarus/static/js/main.3a78834f.js.map",
     "787.25ed0022.chunk.js.map": "/writers-of-belarus/static/js/787.25ed0022.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.40606baa.css",
-    "static/js/main.0051f19d.js"
+    "static/js/main.3a78834f.js"
   ]
 }
