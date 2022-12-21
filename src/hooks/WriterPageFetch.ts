@@ -17,7 +17,6 @@ export function usePage(title: string) {
         try {
             setError("");
             setLoading(true);
-            console.log(i18n.language);
             const response = await axios.get<IPage>(url);
 
             setPage(response.data);

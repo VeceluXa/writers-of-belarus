@@ -64,7 +64,6 @@ export default function SearchAppBar() {
         } else {
             i18n.changeLanguage('en')
         }
-        console.log(i18n.language)
     }
 
     const swapLanguageMenuWrapper = () => {
@@ -88,11 +87,11 @@ export default function SearchAppBar() {
     const UpdateOutput = () => {
         const { pages, error, loading } = useCategoryPages();
 
-        console.log("pages = ", pages)
+        // console.log("pages = ", pages)
 
         let tmp: { label: string, id: number }[] = []
 
-        console.log("pages = ", pages, "error = ", error, "load = ", loading)
+        // console.log("pages = ", pages, "error = ", error, "load = ", loading)
 
         if (pages && !error && !loading) {
             pages?.sort((a, b) => a.title.localeCompare(b.title))
@@ -100,14 +99,14 @@ export default function SearchAppBar() {
 
 
             pages?.forEach((elem) => {
-                console.log("push = ", elem.title)
+                // console.log("push = ", elem.title)
                 tmp.push({ label: elem.title, id: index })
                 index++;
             })
         }
 
         if (tmp != null) {
-            console.log("tmp = ", tmp)
+            // console.log("tmp = ", tmp)
             return tmp
         }
         else

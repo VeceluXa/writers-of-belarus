@@ -20,12 +20,10 @@ export function WritersPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log('Mounted Writers page')
         i18n.on('languageChanged', () => {
             window.location.reload()
         })
         return () => {
-            console.log('Unmounted Writers page')
             i18n.off('languageChanged');
         };
     });

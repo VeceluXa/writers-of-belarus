@@ -54,7 +54,6 @@ export function useWriterDayPage() {
             });
             const responsePage = await axios.get<ISummary>(urlPage);
             setPage(responsePage.data);
-            console.log(responsePage.data);
 
             if (!page) {
                 throw "Couldn't fetch page.";

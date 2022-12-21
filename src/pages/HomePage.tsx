@@ -9,12 +9,10 @@ export function HomePage() {
     const { i18n } = useTranslation()
 
     useEffect(() => {
-        console.log('Mounted Writers page')
         i18n.on('languageChanged', () => {
             window.location.reload()
         })
         return () => {
-            console.log('Unmounted Writers page')
             i18n.off('languageChanged');
         };
     });
