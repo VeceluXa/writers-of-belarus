@@ -14,6 +14,8 @@ import Link from './Link';
 import { useTranslation } from 'react-i18next';
 import {useCategoryPages} from "../hooks/CategoryPagesFetch"
 import {useState} from "react";
+
+
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -222,16 +224,13 @@ export default function SearchAppBar() {
                     </Typography>
                     <Search>
                         <Autocomplete
-                            freeSolo
                             color='rgba(255, 255, 255, 100)'
                             title={"Writers"}
                             id="combo-box-demo"
                             options={writers}
                             sx={{ width: 270, height: 50}}
-                            inputValue={inputValue}
-                            renderInput={(params) => <TextField {...params}
-                                                                label="Writers"
-                                                                color={"success"}/>}
+                            autoComplete={true}
+                            renderInput={(params) => <TextField {...params} label="Writers"/>}
                             onChange={(event, value, reason, details) => {
                                 writers.forEach((writer) => {
                                     if (writer == value) {
