@@ -13,6 +13,8 @@ export function usePage(title: string) {
     const url = t("urlAuthorAPI", { name: `${title.split(" ").join("_")}` });
 
     async function fetchPages(title: string) {
+        if (title === "")
+            return
         try {
             setError("");
             setLoading(true);

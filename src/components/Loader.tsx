@@ -3,16 +3,20 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Loader() {
     return (
-        <Box>
+        <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+        >
             <CircularProgress
                 size={70}
-                sx={{
-                    position: "fixed",
-                    left: "50%",
-                    top: "50%",
-                    transform: "translate(-50%, -50%)",
-                    zIndex: 2
-                }}
+                // sx={{
+                //     position: "fixed",
+                //     left: "50%",
+                //     top: "50%",
+                //     transform: "translate(-50%, -50%)",
+                //     zIndex: 2
+                // }}
             />
         </Box>
     );
