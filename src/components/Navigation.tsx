@@ -101,6 +101,7 @@ export default function SearchAppBar() {
             pages?.sort((a, b) => a.title.localeCompare(b.title))
             let index = 1;
 
+
             pages?.forEach((elem) => {
                 console.log("push = ", elem.title)
                 tmp.push({label: elem.title, id: index})
