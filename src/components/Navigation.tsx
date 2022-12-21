@@ -9,11 +9,11 @@ import InputBase from '@mui/material/InputBase';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-import {Autocomplete, Button, TextField} from '@mui/material';
+import { Autocomplete, Button, TextField } from '@mui/material';
 import Link from './Link';
 import { useTranslation } from 'react-i18next';
-import {useCategoryPages} from "../hooks/CategoryPagesFetch"
-import {useState} from "react";
+import { useCategoryPages } from "../hooks/CategoryPagesFetch"
+import { useState } from "react";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -39,8 +39,8 @@ styled('div')(({ theme }) => ({
 }));
 styled(InputBase)(({ theme }) => ({
     color: 'inherit',
-    input:'onInput',
-    name:'input',
+    input: 'onInput',
+    name: 'input',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
@@ -73,8 +73,8 @@ export default function SearchAppBar() {
     }
 
     const pagess = [[t('home'), '/writers-of-belarus'],
-        [t('writers'), '/writers-of-belarus/writers'],
-        [t('about'), '/writers-of-belarus/about']]
+    [t('writers'), '/writers-of-belarus/writers'],
+    [t('about'), '/writers-of-belarus/about']]
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
@@ -86,11 +86,11 @@ export default function SearchAppBar() {
         setAnchorElNav(null);
     };
     const UpdateOutput = () => {
-        const {pages, error, loading} = useCategoryPages();
+        const { pages, error, loading } = useCategoryPages();
 
         console.log("pages = ", pages)
 
-        let tmp: {label: string, id: number}[] = []
+        let tmp: { label: string, id: number }[] = []
 
         console.log("pages = ", pages, "error = ", error, "load = ", loading)
 
@@ -101,7 +101,7 @@ export default function SearchAppBar() {
 
             pages?.forEach((elem) => {
                 console.log("push = ", elem.title)
-                tmp.push({label: elem.title, id: index})
+                tmp.push({ label: elem.title, id: index })
                 index++;
             })
         }
@@ -111,17 +111,17 @@ export default function SearchAppBar() {
             return tmp
         }
         else
-            return [{label: "do not found", id: 1}]
+            return [{ label: "do not found", id: 1 }]
     }
 
-    const writers: {label: string, id: number}[] = UpdateOutput()
+    const writers: { label: string, id: number }[] = UpdateOutput()
     const [inputValue, setInputValue] = useState("")
 
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar style={{
-                    minHeight:'70px'
+                    minHeight: '70px'
                 }}>
                     <Box
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
@@ -226,7 +226,7 @@ export default function SearchAppBar() {
                     <Search
                         sx={{
                             backgroundColor: 'background.paper',
-                            bgcolor:'background.paper'
+                            bgcolor: 'background.paper'
                         }}
                     >
                         <Autocomplete
@@ -234,16 +234,16 @@ export default function SearchAppBar() {
                             title={"Writers"}
                             id="combo-box-demo"
                             options={writers}
-                            sx={{ 
+                            sx={{
                                 width: 'auto',
-                                minWidth: 270, 
-                                height: 50, 
+                                minWidth: 270,
+                                height: 50,
                                 color: 'background.paper',
                                 // bgcolor: 'transpa',
-                                
+
                             }}
                             autoComplete={true}
-                            renderInput={(params) => <TextField {...params} label={t('search')}/>}
+                            renderInput={(params) => <TextField {...params} label={t('search')} />}
                             onChange={(event, value, reason, details) => {
                                 writers.forEach((writer) => {
                                     if (writer == value) {

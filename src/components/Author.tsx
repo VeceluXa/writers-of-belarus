@@ -6,14 +6,14 @@ import Box from "@mui/material/Box";
 export function Author(props: IAuthor) {
 
     return (
-        <Box 
+        <Box
             style={{ height: '15em', width: '12.5em' }}
             display='flex'
             alignItems='center'
             flexDirection='column'
             margin='auto'
         >
-            <Box 
+            <Box
                 style={{ height: '9.em', width: '10.5em' }}
                 display='flex'
                 justifyContent='center'

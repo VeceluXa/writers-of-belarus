@@ -22,16 +22,9 @@ export function WriterOfTheDay() {
         if (page) {
             for (let value in page.query.pages) {
                 setPageSummary(page.query.pages[value])
-                console.log("123: " + pageSummary?.extract)
             }
-        } else {
-            // console.log(0)
         }
     }, [loading])
-
-    const Image = (
-        <img/>
-    )
 
     const MoreButton = (
         <Button
@@ -40,11 +33,11 @@ export function WriterOfTheDay() {
                 navigate(`/writers-of-belarus/writer/${pageSummary?.title.split(" ").join("_")}`)
             }}
             sx={{
-                width:'fit-content',
+                width: 'fit-content',
                 margin: 'auto'
             }}
         >
-            { t('button') }
+            {t('button')}
         </Button>
     )
 
@@ -59,7 +52,7 @@ export function WriterOfTheDay() {
                 textAlign: "center",
             }}
         >
-            { pageSummary?.title }
+            {pageSummary?.title}
 
         </Typography>
     )
@@ -75,7 +68,7 @@ export function WriterOfTheDay() {
                 fontSize: '1.1em'
             }}
         >
-            { pageSummary?.extract }
+            {pageSummary?.extract}
 
         </Typography>
     )
@@ -113,8 +106,8 @@ export function WriterOfTheDay() {
 
                     </Box>
                     <Box>
-                        { TitleText }
-                        { DescriptionText }
+                        {TitleText}
+                        {DescriptionText}
                     </Box>
                 </Box>
 
@@ -151,9 +144,9 @@ export function WriterOfTheDay() {
                     justifyContent='center'
                     flexDirection='column'
                 >
-                    { TitleText }
-                    { DescriptionText }
-                    { MoreButton }
+                    {TitleText}
+                    {DescriptionText}
+                    {MoreButton}
                 </Box>
             )}
         </Box>
@@ -165,37 +158,4 @@ export function WriterOfTheDay() {
     //     return BrowserView
 
     return MobileView
-
-    // return (
-
-    //     <Box
-    //         display="flex"
-    //         flexDirection="column"
-    //         marginBottom={20}
-    //     >
-    //         <Typography
-    //             variant='h2'
-    //             align='center'
-    //             color='text.primary'
-    //             gutterBottom
-    //             sx={{
-    //                 fontStyle: "oblique",
-    //                 fontWeight: "medium",
-    //                 textAlign: "center",
-    //             }}
-    //         >
-    //             {t("header")}
-    //         </Typography>
-    //         {loading && <Loader />}
-    //         {error && <ErrorMessage error={error} />}
-    //         {pageSummary && (
-    //             <Box>
-    //                 <Typography>
-    //                     {pageSummary.extract}
-    //                 </Typography>
-    //             </Box>
-    //         )}
-    //     </Box>
-
-    // );
 }
