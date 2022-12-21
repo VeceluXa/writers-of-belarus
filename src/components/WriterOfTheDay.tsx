@@ -1,13 +1,26 @@
 import { Box, Typography } from "@mui/material";
-import { Interweave } from "interweave";
 import { useTranslation } from "react-i18next";
 import { useWriterDayPage } from "../hooks/WriterDayPageFetch";
 import Loader from "./Loader";
 import { ErrorMessage } from "./ErrorMessage";
+import { useEffect, useState } from "react";
+import { ISummaryPage } from "../models/ISummary"
 
 export function WriterOfTheDay() {
     const { t } = useTranslation("main", { keyPrefix: "writer-of-the-day" });
     var { page, error, loading } = useWriterDayPage();
+    const [pageSummary, setPageSummary] = useState<ISummaryPage|null>(null)
+
+    useEffect(()=>{
+        if (page) {
+            for (let value in page.query.pages) {
+                setPageSummary(page.query.pages[value])
+                console.log("123: " + pageSummary?.extract)
+            }
+        } else {
+            // console.log(0)
+        }
+    }, [loading])
 
     return (
         <Box
@@ -30,13 +43,11 @@ export function WriterOfTheDay() {
             </Typography>
             { loading && <Loader /> }
             { error && <ErrorMessage error={ error }/> }
-            { page && (
+            { pageSummary && (
                 <Box>
-                    {/* <Interweave
-                        filters={[new InterweaveFilter()]}
-                        content={page.parse.text["*"]}
-                    /> */}
-                    <Interweave  content={page.parse.text['*']} />
+                    <Typography>
+                        { pageSummary.extract }
+                    </Typography>
                 </Box>
             )}
         </Box>

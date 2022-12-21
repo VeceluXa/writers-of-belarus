@@ -2,7 +2,8 @@
     "main": {
         "urls": {
             "urlAuthorAPI": "https://en.wikipedia.org/w/api.php?origin=*&action=parse&prop=text&page={{name}}&format=json",
-            "urlCategoryAPI": "https://en.wikipedia.org/w/api.php?origin=*&query=opensearch&action=query&cmtitle=Category:Belarusian_writers&list=categorymembers&cmtype=page&cmlimit=max&format=json"
+            "urlCategoryAPI": "https://en.wikipedia.org/w/api.php?origin=*&query=opensearch&action=query&cmtitle=Category:Belarusian_writers&list=categorymembers&cmtype=page&cmlimit=max&format=json",
+            "urlPageSummary": "https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles={{name}}"
         },
         "nav": {
             "about": "About",

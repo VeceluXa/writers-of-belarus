@@ -116,7 +116,7 @@ export default function SearchAppBar() {
         }
         let tmp: ICategoryMember[] = []
         pages?.sort((a, b) => a.title.localeCompare(b.title))
-        console.log(pages)
+        // console.log(pages)
 
         let index = 0
         pages?.forEach((elem) => {
